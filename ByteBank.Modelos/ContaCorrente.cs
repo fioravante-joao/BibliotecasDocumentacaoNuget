@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace ByteBank.Modelos
 {
+    /// <summary>
+    /// Define uma conta corrente do banco ByteBank
+    /// </summary>
     public class ContaCorrente
     {
         private static int TaxaOperacao;
@@ -38,6 +41,11 @@ namespace ByteBank.Modelos
             }
         }
 
+        /// <summary>
+        /// Cria uma instancia de Conta Corrente com os argumentos utilizados.
+        /// </summary>
+        /// <param name="agencia">Representa o valor da propriedade <see cref="Agencia"/> e deve possuir um valor maior que 0</param>
+        /// <param name="numero">Representa o valor da propriedade <see cref="Numero"/> e deve possuir um valor maior que 0</param>
         public ContaCorrente(int agencia, int numero)
         {
             if (numero <= 0)
@@ -57,6 +65,12 @@ namespace ByteBank.Modelos
             TaxaOperacao = 30 / TotalDeContasCriadas;
         }
 
+        /// <summary>
+        /// Realiza o saque e atualiza o valor da propiedade <see cref="Saldo"/>
+        /// </summary>
+        /// <exception cref="ArgumentException">Excecao lançado quando um valor negativo é utilizado no argumento <paramref name="valor"/></exception>
+        /// <exception cref="SaldoInsuficienteException">Exececão lançada quando o valor <paramref name="valor"/> é maior que o valor da propriedade <see cref="Saldo"/></exception>
+        /// <param name="valor">Representa o valor do saque, deve sermaior que zero e menor que <see cref="Saldo"/></param>
         public void Sacar(double valor)
         {
             if (valor < 0)
@@ -78,6 +92,13 @@ namespace ByteBank.Modelos
             _saldo += valor;
         }
 
+        /// <summary>
+        /// Realiza a transferência e atualiza o valor da propriedade <see cref="Saldo"/>
+        /// </summary>
+        /// /// <exception cref="ArgumentException">Excecao lançado quando um valor negativo é utilizado no argumento <paramref name="valor"/></exception>
+        /// <exception cref="OperacaoFinanceiraException">Exececão lançada quando o <paramref name="valor"/> é maior que o valor da propriedade <see cref="Saldo"/></exception>
+        /// <param name="valor"></param>
+        /// <param name="contaDestino"></param>
         public void Transferir(double valor, ContaCorrente contaDestino)
         {
             if (valor < 0)
