@@ -13,17 +13,36 @@ namespace ByteBank.SistemaAgencia
     {
         static void Main(string[] args)
         {
-            DateTime dataFimPagamento = new DateTime(2021, 08, 17);
-            DateTime dataCorrente = DateTime.Now;
-            TimeSpan diferenca = TimeSpan.FromMinutes(40);
+            //  pagina?argumentos
+            //  012345678
 
-            string mensagem = "Vencimento em " + TimeSpanHumanizeExtensions.Humanize(diferenca);
+            ExtratorValorDeArgumentosURL extratorValorDeArgumentosURL = new ExtratorValorDeArgumentosURL("http://autodoc.com.br/login?nome=joao&senha=1234");
 
-            Console.WriteLine(mensagem);
+            
+            Console.ReadLine();
 
-            //ContaCorrente conta = new ContaCorrente(1234,123400);
-            //ContaCorrente conta2 = new ContaCorrente(2222,332220);
-            //conta.Transferir(200,conta2);
+            string textoVazio = "";
+            string textoNull = null;
+            string textoQualquer = "dfghjk";
+
+            Console.WriteLine(String.IsNullOrEmpty(textoVazio));
+            Console.WriteLine(String.IsNullOrEmpty(textoNull));
+            Console.WriteLine(String.IsNullOrEmpty(textoQualquer));
+
+            Console.ReadLine();
+
+            ExtratorValorDeArgumentosURL extrator = new ExtratorValorDeArgumentosURL(null);
+
+            string url = "pagina?moedaOrigem=real&moedaDestino=dolar";
+
+            int indiceInterrogacao = url.IndexOf('?');
+
+            Console.WriteLine(indiceInterrogacao);
+
+            Console.WriteLine(url);            
+            string argumentos = url.Substring(indiceInterrogacao+1);
+            Console.WriteLine(argumentos);
+
 
             Console.ReadLine();
         }
