@@ -123,6 +123,11 @@ namespace ByteBank.Modelos
         {
             return $"Numero {Numero}, Agencia {Agencia}, Saldo {Saldo}";
         }
+
+        public override bool Equals(object obj)
+        {
+            return base.Equals(obj);
+        }
     }
 
 }

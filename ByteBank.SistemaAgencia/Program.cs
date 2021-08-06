@@ -14,179 +14,105 @@ namespace ByteBank.SistemaAgencia
     {
         static void Main(string[] args)
         {
-            //ContaCorrente conta = new ContaCorrente(1223, 33456568);
+            Lista<int> idades = new Lista<int>();
 
-            //Console.WriteLine(conta);
-
-            //a implementação do metodos ToString foi alterada na classe ContaCorrente para devolver os valos contidos no Objeto e 
-            //não o nome da classe onde o objeto se encontra .
-            //var contaCorrenteToString = conta.ToString();
-            //Console.WriteLine(contaCorrenteToString);
+            idades.Adicionar(244);
+            idades.AdicionarVarios(244,234,456,432,765);
 
 
-            //Implementação do método Equals com overrride na classe Cliente
-            Cliente cliente1 = new Cliente();
-            Cliente cliente2 = new Cliente();
-
-            cliente1.Nome = "joao";
-            cliente1.CPF = "123.123.123-22";
-            cliente1.Profissao = "Developer";
-
-            cliente2.Nome = "joao";
-            cliente2.CPF = "123.123.123-22";
-            cliente2.Profissao = "Developer";
-
-            ContaCorrente conta2 = new ContaCorrente(1234,345677800);
-
-            if (cliente1.Equals(cliente2))
+            for (int i = 0; i < idades.Tamanho; i++)
             {
-                Console.WriteLine("o Cliente1 é igual o cliente2");
-            }
-            else
-            {
-                Console.WriteLine("Não é igual");
+                Console.WriteLine("for laço");
+                int idadeAtual = idades[i];
+                Console.WriteLine(idadeAtual);
             }
 
-
-
+            Console.WriteLine($" Tamanho {idades.Tamanho}");
 
 
             Console.ReadLine();
         }
 
-        static void codigo()
+        static void TestaListaDeObject()
         {
-            string padraoValidaCPF = "[0-9]{3}.?[0-9]{3}.?[0-9]{3}-?[0-9]{2}";
+            ListaDeObject listaDeIdades = new ListaDeObject();
 
-            string cpf = "412.145.968-78";
+            listaDeIdades.Adicionar(10);
+            listaDeIdades.Adicionar(5);
+            listaDeIdades.Adicionar(5);
+            listaDeIdades.AdicionarVarios(5, 6, 8, 10);
 
-            Match result = Regex.Match(cpf, padraoValidaCPF);
-            Console.WriteLine(result.Value);
-
-            Console.ReadLine();
-
-            //string padrao1 = "Sala [A-G][-]?[0123456789]{2}";
-
-            //// o método IsMatch retorna um booleano
-            //Console.WriteLine(Regex.IsMatch("Sala G345", padrao1));
-            //Console.WriteLine(Regex.IsMatch("Sala J-001", padrao1));
-            //Console.WriteLine(Regex.IsMatch("Sala a004", padrao1));
-            //Console.WriteLine(Regex.IsMatch("Sala C004", padrao1));
-            //Console.WriteLine(Regex.IsMatch("Minha sala é a sala G34", padrao1));
-            //Console.WriteLine(Regex.IsMatch("Minha sala é a Sala G-34", padrao1));
-
-            //Console.ReadLine();
-
-            //Recuperando numero de telefone com expressões regulares   ou   REGEX
-
-            //string padrao = "[0123456789][0123456789][0123456789][0123456789][-][0123456789][0123456789][0123456789][0123456789]";
-
-            //string padrao = "[0-9][0-9][0-9][0-9][-][0-9][0-9][0-9][0-9]";
-
-            //string padrao = "[0-9]{4}[-][0-9]{4}";
-            //string padrao = "[0-9]{4,5}[-]{0,1}[0-9]{4}";
-            //string padrao = "[0-9]{4,5}-{0,1}[0-9]{4}";
-            string padrao = "[0-9]{4,5}-?[0-9]{4}";
-
-
-            string textoDeTeste = "Meu nome é João, me ligue em 94860----3429";
-
-            //o método Regex.Match   captura a string de acordo com a expressão regular.
-            Match resultado = Regex.Match(textoDeTeste, padrao);
-            if (resultado.Value == "")
+            for (int i = 0; i < listaDeIdades.Tamanho; i++)
             {
-                Console.WriteLine("O padrão está inválido");
+                int idade = (int)listaDeIdades[i];
+                Console.WriteLine($"idade no indice {i}: {idade}");
             }
-            Console.WriteLine(resultado.Value);
+        }
+        static void testaListaDeContaCorrente()
+        {
+            ListaDeContaCorrente lista = new ListaDeContaCorrente();
 
+            ContaCorrente contaJoao = new ContaCorrente(123, 123456);
 
-            Console.ReadLine();
+            ContaCorrente[] contas = new ContaCorrente[]
+            {
+                contaJoao,
+                new ContaCorrente(123, 3898765),
+                new ContaCorrente(123, 1234567)
+            };
 
+            lista.AdicionarVarios(contas);
 
+            for (int i = 0; i < lista.Tamanho; i++)
+            {
+                ContaCorrente itemAtual = lista[i];
+                Console.WriteLine($"Item na posicao {i} = Conta {itemAtual.Numero}/{itemAtual.Agencia}");
+            }
+        }
+        static void testaArrayDeContaCorrente()
+        {
+            //inicializador de array's
+            ContaCorrente[] contas = new ContaCorrente[]
+            {
+                new ContaCorrente(123, 12343455),
+                new ContaCorrente(123, 87654322),
+                new ContaCorrente(123, 56754327)
+            };
 
+            for (int indice = 0; indice < contas.Length; indice++)
+            {
+                ContaCorrente contaAtual = contas[indice];
+                Console.WriteLine($"Conta {indice} {contaAtual.Numero}");
+            }
+        }
+        static void testaArrayInt()
+        {
+            //array de inteiros, com 5 posições!
+            int[] idades = new int[6];
 
-            //  pagina?argumentos
-            //  012345678
+            idades[0] = 23;
+            idades[1] = 18;
+            idades[2] = 12;
+            idades[3] = 60;
+            idades[4] = 26;
+            idades[5] = 36;
 
-            //ExtratorValorDeArgumentosURL extratorValorDeArgumentosURL = new ExtratorValorDeArgumentosURL("http://autodoc.com.br/login?nome=joao&senha=1234");
+            Console.WriteLine(idades.Length);
 
+            int acumulador = 0;
 
-            //Console.ReadLine();
+            for (int indice = 0; indice < idades.Length; indice++)
+            {
+                int idade = idades[indice];
+                Console.WriteLine($"Acessando o array idades no indice {indice}");
+                Console.WriteLine($"valor de idades[{indice}] = {idade}");
 
-            string urlDeTeste = "https://google.com/?q=https://www.bytebank.com/cambio";
-            int indiceByteBank = urlDeTeste.IndexOf("https://www.bytebank.com");
+                acumulador += idade;
+            }
 
-            //O metodo StartsWith retorna um boleano se a string começa com ....
-            Console.WriteLine(urlDeTeste.StartsWith("https://www.bytebank.com"));
-            //O metodo StartsWith retorna um boleano se a string termina com ....
-            Console.WriteLine(urlDeTeste.EndsWith("cambio"));
+            int media = acumulador / idades.Length;
 
-            Console.WriteLine(urlDeTeste.Contains("bytebank"));
-
-
-            Console.WriteLine(indiceByteBank == 0);
-
-            Console.ReadLine();
-
-            string urlParametros = "https://www.bytebank.com/cambio?moedaOrigem=real&moedaDestino=dolar&valor=1500";
-            ExtratorValorDeArgumentosURL extratorDeValores = new ExtratorValorDeArgumentosURL(urlParametros);
-
-            string valor = extratorDeValores.GetValor("moedaDestino");
-            Console.WriteLine("Valor de Moeda Destino: " + valor);
-
-            string valorMoedaOrigem = extratorDeValores.GetValor("moedaOrigem");
-            Console.WriteLine("Valor de Moeda Origem: " + valorMoedaOrigem);
-
-            Console.WriteLine(extratorDeValores.GetValor("VALOR"));
-
-            Console.ReadLine();
-
-            //Testando o Replace 
-            string mensagemOriginal = "PALAVRA";
-            string textoBusca = "PALAVRA";
-
-            textoBusca = textoBusca.Replace("PALAVRA", "palavrinhas"); //replace alterando string
-            textoBusca = textoBusca.Replace('P', 'p'); // replace alterando char
-            textoBusca = textoBusca.ToLower(); //  minusculas
-            textoBusca = textoBusca.ToUpper(); //  maiúsculas
-
-            Console.WriteLine(textoBusca);
-
-            Console.ReadLine();
-
-            //string textoVazio = "";
-            //string textoNull = null;
-            //string textoQualquer = "dfghjk";
-
-            //Console.WriteLine(String.IsNullOrEmpty(textoVazio));
-            //Console.WriteLine(String.IsNullOrEmpty(textoNull));
-            //Console.WriteLine(String.IsNullOrEmpty(textoQualquer));
-
-            //Console.ReadLine();
-
-            //ExtratorValorDeArgumentosURL extrator = new ExtratorValorDeArgumentosURL("https://autodoc.atlassian.net/secure/RapidBoard.jspa?rapidView=43&projectKey=DEV&selectedIssue=DEV-9484");
-
-            //string url = "pagina?moedaOrigem=real&moedaDestino=dolar";
-
-            //int indiceInterrogacao = url.IndexOf('?');
-
-            //Console.WriteLine(indiceInterrogacao);
-
-            //Console.WriteLine(url);            
-            //string argumentos = url.Substring(indiceInterrogacao+1);
-            //Console.WriteLine(argumentos);
-
-            //string endereco = "https://autodoc.atlassian.net/secure/RapidBoard.jspa?rapidView=43&projectKey=DEV&selectedIssue=DEV-9484";
-
-            //int interrogacao = endereco.IndexOf('?');
-
-            //Console.WriteLine(interrogacao);
-
-            //Console.WriteLine(endereco);
-            //string capturaArgumentos = endereco.Substring(interrogacao + 1);
-            //Console.WriteLine(capturaArgumentos);
-
-            Console.ReadLine();
+            Console.WriteLine($"Media de idades = {media}");
         }
     }
 }
