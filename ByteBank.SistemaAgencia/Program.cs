@@ -1,38 +1,110 @@
-﻿using System;
+﻿using ByteBank.Modelos;
+using ByteBank.SistemaAgencia.Extensoes;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
-using ByteBank.Modelos;
-using ByteBank.Modelos.Funcionarios;
-using Humanizer;
-using ICSharpCode.SharpZipLib;
 namespace ByteBank.SistemaAgencia
 {
     class Program
     {
         static void Main(string[] args)
         {
-            Lista<int> idades = new Lista<int>();
-
-            idades.Adicionar(244);
-            idades.AdicionarVarios(244,234,456,432,765);
-
-
-            for (int i = 0; i < idades.Tamanho; i++)
+            var contas = new List<ContaCorrente>() //cria a variavel e já inicializa ela com a lista, e abaixo já preenche a lista
             {
-                Console.WriteLine("for laço");
-                int idadeAtual = idades[i];
-                Console.WriteLine(idadeAtual);
+                //inicializador da lista<ContaCorrente>
+                new ContaCorrente(132,999999),
+                new ContaCorrente(932,765432),
+                null,
+                new ContaCorrente(532,822288)
+            };
+
+            //contas.Sort();
+
+            //contas.Sort(new ComparadorContaCorrentePorAgencia());
+                        
+            var contasOrdernadas = contas    //lib/dll linq com expressões lambda 
+                .Where(conta => conta != null)
+                .OrderBy(conta => conta.Numero);
+
+            foreach (var conta in contasOrdernadas)
+            {
+                Console.WriteLine($"Conta: {conta.Numero}, Agencia: {conta.Agencia}");  
             }
 
-            Console.WriteLine($" Tamanho {idades.Tamanho}");
+
+
+
+
+
+
+
+
+            //var aulas = new List<Aula>()
+            //{
+            //    new Aula("Wendor", 1),
+            //    new Aula("Métodos e propriedades", 35),
+            //    new Aula("Expressões regulares", 29),
+            //    new Aula("Classe object", 45)
+            //    //new Aula(null,0) //teste passando titulo como nullo.
+            //};
+
+            ////aulas.Sort(); // metodo compareTO implementado na classe Aula permite a comparação por Tempo
+
+            ////metodo compare implementado na classe ComparadorNomeAula permite a comparação por Tempo e por Título
+            //aulas.Sort(new ComparadorNomeAula());
+
+            //Imprimir(aulas);
 
 
             Console.ReadLine();
         }
 
+        static void Imprimir(List<Aula> aulas)
+        {
+            foreach (var aula in aulas)
+            {
+                Console.WriteLine(aula);
+            }
+        }
+        static void testaSort()
+        {
+            var nomes = new List<string>()  //cria a varriavel e já inicializa ela com a lista  e abaixo já preenche a lista
+            {
+                //inicializador de listas
+                "Amom",
+                "Negron",
+                "Juiron",
+                "Wandon"
+            };
+
+            nomes.AdicionarVarios("A", "Ana", "Maria");
+
+            nomes.Sort();
+
+            foreach (var item in nomes)
+            {
+                Console.WriteLine(item);
+            }
+
+
+            var idades = new List<int>();
+
+            idades.Add(2);
+            idades.Add(22);
+            idades.Add(23);
+            idades.Add(24);
+
+            idades.AdicionarVarios(1, 3, 4, 6, 8);
+
+            idades.AdicionarVarios(99, -1);
+
+            idades.Sort();
+
+            for (int i = 0; i < idades.Count; i++)
+            {
+                Console.WriteLine(idades[i]);
+            }
+        }
         static void TestaListaDeObject()
         {
             ListaDeObject listaDeIdades = new ListaDeObject();

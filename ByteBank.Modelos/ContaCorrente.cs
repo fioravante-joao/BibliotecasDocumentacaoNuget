@@ -9,7 +9,7 @@ namespace ByteBank.Modelos
     /// <summary>
     /// Define uma conta corrente do banco ByteBank
     /// </summary>
-    public class ContaCorrente
+    public class ContaCorrente : IComparable
     {
         private static int TaxaOperacao;
 
@@ -128,6 +128,31 @@ namespace ByteBank.Modelos
         {
             return base.Equals(obj);
         }
-    }
 
+        public int CompareTo(object obj)
+        {
+            //retornar negativo quando as intancia precede o obj
+            //retornar zero quando nossa instancia e obj forem equivalentes
+            //retornar positivo diferente de zero quando precedencia for de obj
+
+            var outraConta = obj as ContaCorrente;
+
+            if (outraConta == null)
+            {
+                return -1;
+            }
+
+            if (Numero < outraConta.Numero)
+            {
+                return -1;
+            }
+
+            if (Numero == outraConta.Numero)
+            {
+                return 0;
+            }
+
+            return 1;
+        }
+    }
 }
