@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ByteBank.Modelos", "ByteBan
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MetodoDeExtensao", "MetodoDeExtensao\MetodoDeExtensao.csproj", "{951CAFF8-93A6-4AC9-8808-80F9A277634C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ByteBankImportacaoExportacao", "ByteBankImportacaoExportacao\ByteBankImportacaoExportacao.csproj", "{9F21CAB1-DFF2-439A-9F6C-FDE1B21E8E4F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{951CAFF8-93A6-4AC9-8808-80F9A277634C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{951CAFF8-93A6-4AC9-8808-80F9A277634C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{951CAFF8-93A6-4AC9-8808-80F9A277634C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9F21CAB1-DFF2-439A-9F6C-FDE1B21E8E4F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9F21CAB1-DFF2-439A-9F6C-FDE1B21E8E4F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9F21CAB1-DFF2-439A-9F6C-FDE1B21E8E4F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9F21CAB1-DFF2-439A-9F6C-FDE1B21E8E4F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
